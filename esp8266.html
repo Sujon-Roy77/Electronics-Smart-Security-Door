@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { background-color: rgb(84, 88, 117); font-family: Arial, sans-serif; text-align: center; color: white; }
+        h3 { margin-top: 20px; }
+        input { margin: 10px 0; padding: 8px; }
+        button { background-color: white; color: black; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background-color: grey; }
+        footer { position: fixed; bottom: 0; left: 0; width: 100%; background-color: black; color: white; padding: 20px 0; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h3>Electronics Smart Security Door</h3>
+    <p>Please type your Password</p>
+    <div>
+        ID: <input type="text" id="pass_word" size="10" autofocus>
+    </div>
+    <div>
+        <button id="save_button">Log In</button>
+    </div>
+    <footer>
+    <p>If you have any questions, feel free to email me at 
+       <a href="mailto:sujon091491@gmail.com">sujon091491@gmail.com</a>
+    </p>
+          Developer by Sujon Roy <br> Contact: +8801301767650 <br>
+    </footer>
+    <script>
+        document.getElementById('save_button').addEventListener('click', () => {
+            const pass = document.getElementById('pass_word').value;
+            fetch(`/save?pass=${pass}`)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(err => console.error('Error:', err));
+        });
+    </script>
+</body>
+</html>
